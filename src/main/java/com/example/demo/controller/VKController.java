@@ -1,9 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.vk.VKPostDto;
-import com.example.demo.service.VKCallbackApiHandler;
-import com.example.demo.service.VKPostDtoService;
-import com.example.demo.service.VKService;
+import com.example.demo.service.vk.VKCallbackApiHandler;
+import com.example.demo.service.vk.VKPostDtoService;
+import com.example.demo.service.vk.VKService;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import org.springframework.beans.factory.annotation.Autowired;

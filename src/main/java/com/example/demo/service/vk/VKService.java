@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.service.vk;
 
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;

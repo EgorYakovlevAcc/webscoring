@@ -1,7 +1,6 @@
 package com.example.demo.service.schedule;
 
-import com.example.demo.service.VKPostDtoService;
-import com.example.demo.service.VKService;
+import com.example.demo.service.vk.VKService;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import org.slf4j.Logger;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -23,7 +21,7 @@ public class UpdatePostsServiceImpl implements UpdatePostsService {
     private Logger LOGGER = LoggerFactory.getLogger(UpdatePostsServiceImpl.class);
 
     @Async
-    @Scheduled(fixedRate = 1000)
+    @Scheduled(fixedRate = 300000)
     public void updateListOfPosts() throws ClientException, ApiException, IOException {
         vkService.loadPosts();
     }

@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.service.vk;
 
 import com.example.demo.model.vk.VKPostDto;
 
