@@ -1,5 +1,6 @@
 package com.example.demo.service.telegram;
 
 public interface TelegramService {
-    void call();
+    void initBot();
+    void sendMessageToGroup(String text);
 }

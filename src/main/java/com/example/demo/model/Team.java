@@ -4,20 +4,23 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.UniqueElements;
 
+import javax.annotation.processing.Generated;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "predictions")
-public class Prediction {
+@Table(name="teams")
+public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
-    private String content;
-
+    private String name;
+    @ManyToMany
+    private List<Match> matches;
 }
