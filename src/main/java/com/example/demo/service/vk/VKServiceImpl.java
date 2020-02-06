@@ -2,6 +2,7 @@ package com.example.demo.service.vk;
 
 import com.example.demo.model.vk.VKPostDto;
 import com.example.demo.pojo.Groups;
+import com.example.demo.service.regex.RegexService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vk.api.sdk.client.TransportClient;
 import com.vk.api.sdk.client.VkApiClient;
@@ -31,6 +32,8 @@ public class VKServiceImpl implements VKService {
     private static final String VK_SERVICE_KEY = "fed3591efed3591efed3591e0ffebdf4d6ffed3fed3591ea328c8045ddc94fe9d18449e";
     @Autowired
     private VKPostDtoService vkPostDtoService;
+    @Autowired
+    private RegexService regexService;
 
     @Override
     public void loadPosts() throws ClientException, ApiException, IOException {
@@ -47,10 +50,13 @@ public class VKServiceImpl implements VKService {
             GetResponse getResponse = wallGetQuery.execute();
             List<WallPostFull> listOfPosts = getResponse.getItems();
             for (WallPostFull wallPostFull : listOfPosts) {
-                VKPostDto vkPostDto = new VKPostDto();
-                vkPostDto.setText(wallPostFull.getText());
-                vkPostDto.setDate(wallPostFull.getDate());
-                vkPostDtoService.save(vkPostDto);
+                String text = wallPostFull.getText();
+                if (regexService.checkPostWithRegexes(text)) {
+                    VKPostDto vkPostDto = new VKPostDto();
+                    vkPostDto.setText(wallPostFull.getText());
+                    vkPostDto.setDate(wallPostFull.getDate());
+                    vkPostDtoService.save(vkPostDto);
+                }
             }
         }
         LOGGER.info("loadPosts [FINISH]");

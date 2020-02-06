@@ -7,6 +7,6 @@ import java.util.List;
 
 @Getter
 @Setter
-public class Groups {
-    private List<String> names;
+public class Regexes {
+    private List<String> regex;
 }
