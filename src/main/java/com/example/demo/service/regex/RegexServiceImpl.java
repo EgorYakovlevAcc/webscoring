@@ -48,10 +48,10 @@ public class RegexServiceImpl implements RegexService {
         List<String> regexesStr = getRegexesForParsing().getRegex();
         for (String regex: regexesStr){
             int index = text.indexOf(regex);
-            if (index == -1) {
-                return false;
+            if (index != -1) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 }
